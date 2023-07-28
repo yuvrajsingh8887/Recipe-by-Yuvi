@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Website</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/appetizers">Appetizers</a></li>
+                <li><a href="/main-courses">Main Courses</a></li>
+                <li><a href="/desserts">Desserts</a></li>
+                <li><a href="/my-favorites">My Favorite Recipes</a></li>
+            </ul>
+
+            <section class="search-form">
+                <form action="/search" method="get">
+                    <input type="text" name="query" placeholder="Search recipes...">
+                    <button type="submit">Search</button>
+                </form>
+            </section>
+        </nav>
+    </header>
+
+    <!-- Homepage with featured recipes -->
+    <main>
+        <h1 class="bio">Welcome to YUVI's Recipe Collection 😊💕😍👌</h1>
+        <br>
+        <br>
+        <section class="featured-recipes">
+            <% recipes.forEach((recipe)=> { %>
+                <div class="recipe-card">
+                    <img src="<%= recipe.imageUrl %>" alt="<%= recipe.title %>">
+                    <h2><a href="/recipe/<%= recipe.id %>">
+                            <%= recipe.title %>
+                        </a></h2>
+                </div>
+                <% }); %>
+        </section>
+    </main>
+</body>
+
+</html>

@@ -1,0 +1,37 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Favorite Recipes</title>
+    <link rel="stylesheet" href="my-favorites.css">
+</head>
+<body>
+    <header>
+        <h1>My Favorite Recipes</h1>
+    </header>
+
+    <main>
+        <section class="favorite-recipes">
+            <% favoriteRecipes.forEach((recipe) => { %>
+                <div class="recipe-card">
+                    <img src="<%= recipe.imageUrl %>" alt="<%= recipe.title %>">
+                    <h2><%= recipe.title %></h2>
+                    <p>Serving Size: <%= recipe.servingSize %></p>
+
+
+                    <form action="/recipe/<%= recipe.id %>/remove-favorite" method="post">
+                        <button type="submit" class="remove-favorite-btn">
+                          <img src="remove_icon.png" alt="Remove from Favorites">
+                        </button>
+                      </form>
+
+
+                </div>
+            <% }); %>
+        </section>
+    </main>
+
+</body>
+</html>

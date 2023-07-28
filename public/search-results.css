@@ -1,0 +1,36 @@
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+  }
+  
+  .search-results {
+    margin: 20px;
+  }
+  
+  h2 {
+    color: #009688;
+  }
+  
+  .recipe-card {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .recipe-card img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-right: 10px;
+  }
+  
+  .recipe-card h2 {
+    font-size: 20px;
+  }
+  

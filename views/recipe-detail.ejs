@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="stylesheet" href="/recipe-detail.css">
+</head>
+
+<body>
+  <!-- Recipe detail sec -->
+  <main>
+    <section class="recipe-detail">
+      <h2>
+        <%= recipe.title %>
+      </h2>
+
+      <div class="favorite-buttons">
+        <% if (recipe.isFavorite) { %>
+          <form action="/recipe/<%= recipe.id %>/remove-favorite" method="POST">
+            <button type="submit">Remove from Favorites</button>
+          </form>
+          <% } else { %>
+            <form action="/recipe/<%= recipe.id %>/add-favorite" method="POST">
+              <button type="submit">Add to Favorites</button>
+            </form>
+            <% } %>
+      </div>
+
+
+      <p>Preparation Time: <%= recipe.prepTime %>
+      </p>
+      <p>Cook Time: <%= recipe.cookTime %>
+      </p>
+      <p>Total Time: <%= recipe.totalTime %>
+      </p>
+      <p>Serving Size: <%= recipe.servingSize %>
+      </p>
+      <h3>Ingredients</h3>
+      <ul>
+        <% recipe.ingredients.forEach((ingredient)=> { %>
+          <li>
+            <%= ingredient %>
+          </li>
+          <% }); %>
+      </ul>
+      <h3>Instructions</h3>
+      <ol>
+        <% recipe.instructions.split('\n').forEach((step)=> { %>
+          <li>
+            <%= step.trim() %>
+          </li>
+          <% }); %>
+      </ol>
+      <button id="printButton">Print This Page</button>
+
+
+
+      <!-- Ratings and Review Form -->
+      <div class="ratings-reviews-form">
+        <h3>Rate this Recipe</h3>
+        <form action="/recipe/<%= recipe.id %>/add-rating" method="POST">
+          <select name="rating" required>
+            <option value="" disabled selected>Select a rating</option>
+            <option value="5">5 - Excellent</option>
+            <option value="4">4 - Very Good</option>
+            <option value="3">3 - Good</option>
+            <option value="2">2 - Fair</option>
+            <option value="1">1 - Poor</option>
+          </select>
+          <button type="submit">Submit Rating</button>
+        </form>
+
+        <h3>Write a Review</h3>
+        <form action="/recipe/<%= recipe.id %>/review" method="post">
+          <textarea name="review" rows="4" cols="50" placeholder="Write your review here..." required></textarea>
+          <button type="submit">Submit Review</button>
+        </form>
+      </div>
+
+      <!-- showing Existing Ratings and Reviews  -->
+      <div class="existing-ratings-reviews">
+        <h3>Existing Ratings and Reviews</h3>
+        <% if (recipe.ratings.length===0 && recipe.reviews.length===0) { %>
+          <p>No ratings or reviews yet.</p>
+          <% } else { %>
+            <h4>Average Rating: <%= calculateAverageRating(recipe.ratings) %>
+            </h4>
+            <% recipe.reviews.forEach((review)=> { %>
+              <p>
+                <%= review %>
+              </p>
+              <% }); %>
+                <% } %>
+      </div>
+
+    </section>
+  </main>
+
+  <footer>
+    <!-- Footer content -->
+    <div class="social-buttons">
+      <a class="facebook-share-button" href="#" onclick="shareOnFacebook()">Share on Facebook</a>
+      <a class="twitter-share-button" href="#" onclick="shareOnTwitter()">Share on Twitter</a>
+      <a class="pinterest-share-button" href="#" onclick="shareOnPinterest()">Share on Pinterest</a>
+    </div>
+
+  </footer>
+
+
+  <script>
+    // js for  Print button 
+    const printButton = document.getElementById('printButton');
+    printButton.addEventListener('click', () => {
+      window.print();
+    });
+
+
+
+    // js for social media sharing
+    function shareOnFacebook() {
+      const url = 'recipeUrl';
+      window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`, '_blank');
+    }
+
+    function shareOnTwitter() {
+      const url = 'recipeUrl';
+      window.open(`https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}`, '_blank');
+    }
+
+    function shareOnPinterest() {
+      const url = 'recipeUrl';
+      window.open(`https://pinterest.com/pin/create/button/?url=${encodeURIComponent(url)}`, '_blank');
+    }
+
+
+
+    // Js function to calculate the average rating
+    function calculateAverageRating(ratings) {
+      if (ratings.length === 0) {
+        return 'N/A';
+      }
+
+      const totalRatings = ratings.reduce((sum, rating) => sum + rating, 0);
+      const averageRating = totalRatings / ratings.length;
+      return averageRating.toFixed(1);
+    }
+
+  </script>
+</body>
+
+</html>

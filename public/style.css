@@ -1,0 +1,218 @@
+
+body, h1, h2, p, ul, li {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+
+
+/* Styling for the header and navigation menu */
+header {
+  background-color: #333; /* Dark background color for the navigation bar */
+  color: #fff; /* White text color for the navigation links */
+  position: fixed; /* Make the navigation bar fixed */
+  top: 0; /* Position the navigation bar at the top */
+  left: 0;
+  width: 100%; /* Make the navigation bar span the entire width of the viewport */
+  padding: 5px 0; 
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav li {
+    margin-right: 20px;
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+}
+
+
+
+
+
+/* Styling for the search container */
+.search-container {
+    display: flex;
+    align-items: center;
+}
+
+#search-input {
+    margin-right: 10px;
+    padding: 5px;
+    border: 1px solid #ccc;
+}
+
+
+
+
+/* Styling for the main content */
+main {
+    padding: 20px;
+}
+
+
+
+/* Styling for the featured recipes section */
+.featured-recipes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.recipe-card {
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+.recipe-card img {
+    width: 100%;
+    height: auto;
+}
+
+.recipe-card h2 {
+    margin-top: 10px;
+}
+
+
+
+/* Styling for the footer */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
+
+
+/* Styling for social media icons*/
+.social-icon {
+    font-size: 20px;
+    margin-right: 10px;
+    color: white;
+}
+
+
+
+
+
+/* Style for the search form */
+.search-form {
+    margin: 20px 0;
+  }
+  
+  .search-form form {
+    display: flex;
+  }
+  
+  .search-form input[type="text"] {
+    flex: 1;
+    padding: 8px;
+  }
+  
+  .search-form button {
+    padding: 8px 16px;
+  }
+  
+  
+  /* Style for the search results */
+  .search-results {
+    margin: 20px 0;
+  }
+  
+  .search-results h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .search-results ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .search-results li {
+    margin-bottom: 10px;
+  }
+
+
+  
+/* Style for the recipe detail page
+.recipe-detail {
+    margin: 20px 0;
+  }
+  
+  .recipe-detail h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .recipe-detail p {
+    margin-bottom: 5px;
+  }
+  
+  .recipe-detail ul,
+  .recipe-detail ol {
+    margin-left: 20px;
+  }
+   */
+
+
+
+
+.bio {
+  font-size: 48px;
+  color: #ff0066; 
+  text-align: center;
+  margin-top: 90px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); 
+}
+
+.emoji {
+  font-size: 48px;
+  margin-left: 10px;
+}
+
+.emoji:hover {
+  animation: bounce 1s;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+body {
+  background: linear-gradient(45deg, #FF9A8B, #FFD86F, #4FEEFF);
+  background-size: 600% 100%;
+  animation: gradientAnimation 10s ease infinite;
+}
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
